@@ -1,0 +1,6 @@
+This is Ben Pryke's open source Matlab/C++ implementation of the
+Tracking-Learning-Detection (TLD) algorithm available under the terms of the
+GNU General Public License as published by the Free Software Foundation. The
+full license is included in the file LICENSE.txt.
+
+See Documentation.pdf for details on compiling, running, and using BPTLD.
