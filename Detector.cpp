@@ -94,7 +94,7 @@ vector<double *> *Detector::detect(IntegralImage *frame, double *tbb) {
             int currentHeight = (int)(scale * baseHeight);
             int maxY = height - currentHeight;
             int iterationsY = 30;
-            int incY = (maxX - minX) / (iterationsY - 1);
+            int incY = (maxY - minY) / (iterationsY - 1);
             
             // If bounding-box height >= frame height, make only 1 iteration
             // of the following for loop
