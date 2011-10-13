@@ -33,7 +33,7 @@ void IntegralImage::createFromMatlab(const mxArray *mxImage) {
         data[i][0] = 0;
         
         for (int j = 1; j <= height; j++) {
-            data[i][j] = values[i * height + j] + data[i - 1][j] + data[i][j - 1] - data[i - 1][j - 1];
+            data[i][j] = values[(i - 1) * height + (j - 1)] + data[i - 1][j] + data[i][j - 1] - data[i - 1][j - 1];
         }
     }
     
@@ -98,7 +98,7 @@ void IntegralImage::createWarp(IntegralImage *image, double *bb, float *m) {
 
 
 int IntegralImage::sumRect(int x, int y, int w, int h) {
-    // Note: assumes all parameters are positive and within the image bounds
+    // Check all parameters are positive and within the image bounds
     if (x >= 0 && w > 0 && x + w <= width && y >= 0 && h > 0 && y + h <= height) {
         return data[x][y] + data[x + w][y + h] - data[x + w][y] - data[x][y + h];
     } else {
