@@ -32,11 +32,11 @@ function [stream, bb, resolution] = init()
     msg = 'Draw a box around the object and double-click inside';
     instructionsHandle = text(10, 10, msg, 'color', 'y', 'FontWeight', 'bold');
     
-    % Wait for user to double-click inside a large enough rectangle
+    % Wait for user to double-click inside an appropriately sized rectangle
     errorMsg = 'Box not large enough!';
     bb = zeros(1, 4);
     
-    while (bb(3) < 40 || bb(4) < 40)
+    while (bb(3) < 40 || bb(3) >= resolution(1) || bb(4) < 40 || bb(4) >= resolution(2))
         rectHandle = imrect;
         bb = wait(rectHandle);
         delete(rectHandle);

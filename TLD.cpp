@@ -146,6 +146,13 @@ void trainNegative(IntegralImage *frame, double *tbb) {
         int iterationsX = 20;
         int incX = (maxX - minX) / (iterationsX - 1);
         
+        // If bounding-box width >= frame width, make only 1 iteration of the
+        // following for loop
+        if (incX <= 0) {
+            maxX = 0;
+            incX = 1;
+        }
+        
         // Loop through all bounding-box top-left x-positions
         for (int x = minX; x <= maxX; x += incX) {
             // Same for y
@@ -154,6 +161,13 @@ void trainNegative(IntegralImage *frame, double *tbb) {
             int maxY = frameHeight - currentHeight;
             int iterationsY = 20;
             int incY = (maxX - minX) / (iterationsY - 1);
+            
+            // If bounding-box height >= frame height, make only 1 iteration
+            // of the following for loop
+            if (incY <= 0) {
+                maxY = 0;
+                incY = 1;
+            }
             
             // Loop through all bounding-box top-left x-positions
             for (int y = minY; y <= maxY; y += incY) {
